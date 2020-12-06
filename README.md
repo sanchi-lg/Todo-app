@@ -11,24 +11,22 @@ https://sanchi-lg.github.io/Todo-app/
 
 
 <p align="center">
-  <img src="todo1.JPEG">
+  <img src="todo1.JPG" width=70% height=70%>
   <br/>
-    <img src="todo2.JPEG">
+    <img src="todo2.JPG" width=70% height=70%>
   <br/>
-    <img src="todo3.JPEG">
+    <img src="todo4.JPG" width=70% height=70%>
   <br/>
-    <img src="todo4.JPEG">
+    <img src="todo5.JPG" width=70% height=70%>
   <br/>
-    <img src="todo5.JPEG">
+    <img src="todo6.JPG" width=70% height=70%>
   <br/>
-    <img src="todo6.JPEG">
+    <img src="todo7.JPG" width=70% height=70%>
   <br/>
-    <img src="todo7.JPEG">
+    <img src="todo8.JPG" width=70% height=70%>
   <br/>
-    <img src="todo8.JPEG">
+    <img src="todo9.JPG" width=70% height=70%>
   <br/>
-    <img src="todo9.JPEG">
-  <br/>
-    <img src="todo10.JPEG">
+    <img src="todo10.JPG" width=70% height=70%>
   <br/>
 </p>
