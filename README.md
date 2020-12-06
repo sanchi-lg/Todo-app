@@ -6,6 +6,11 @@ Manage your Todo  list on  your device
 * Remove completed tasks
 * Empty tasks list
 
+### Technologies used
+* HTML
+* CSS
+* JavaScript
+
 ## Demo
 https://sanchi-lg.github.io/Todo-app/
 
