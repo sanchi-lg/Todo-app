@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Todo</title>
+    <style>
+        body {
+            background-color: green;
+        }
+
+        .main {
+            background-color: white;
+            width: 90%;
+            min-height: 600px;
+            margin-top: 100px;
+            margin-left: 50px;
+            border-radius: 12px;
+            padding: 10px;
+        }
+
+        #nam:focus,
+        #nam:active {
+            border-radius: 4px;
+            height: 32px;
+
+        }
+
+        #cc,
+        #el,
+        #sl {
+            height: 33px;
+            width: 100px;
+            border-radius: 2px;
+            border: transparent;
+            margin:3px;
+                    }
+
+        #cc:active,
+        #cc:focus,
+        #sl:active,
+        #sl:focus,
+        #el:active,
+        #el:focus {
+            height: 34px;
+            cursor: pointer;
+            width: 95px;
+            border-radius: 4px;
+            background-color: lightgray;
+
+        }
+
+        .completed {
+            background-color: skyblue;
+        }
+
+        #dislist {
+            margin-top: 30px;
+            margin-bottom: 30px;
+
+        }
+
+        #dislist li {
+            margin-bottom: 5px;
+
+        }
+        #dislist li:focus ,#dislist li:active ,#dislist li:hover{
+         cursor: pointer;
+         background-color: lightgrey;
+        }
+
+    </style>
+    <script>
+        var arr = []
+        var name
+        function subi() {
+            sub("uncompleted", document.getElementById('nam').value)
+        }
+        function cc() {
+
+            var ci = dislist.getElementsByClassName("completed")
+            console.log(ci)
+            if (ci.length > 0) {
+                if (window.confirm("Are you sure ?Once you clear completed tasks list ,you will not be able to recover it")) {
+                    while (ci.length > 0) {
+                        ci.item(0).remove()
+                    }
+                }
+            }
+            else {
+                alert("Nothing to clear")
+            }
+
+        }
+        function el() {
+            var ei = dislist.children
+            if (ei.length > 0) {
+                if (window.confirm("Are you sure ?Once you empty the list, you will not be able to recover it")) {
+                    while (ei.length > 0) {
+                        ei.item(0).remove()
+                    }
+                }
+            }
+
+            else {
+                alert("Nothing to clear")
+            }
+        }
+          
+
+        function sl() {
+            var todos = []
+            for (var i = 0; i < dislist.children.length; i++) {
+                var todo = dislist.children.item(i)
+                var nobj = {
+                    "task": todo.innerText,
+                    "completed": todo.classList.contains("completed")
+                }
+                todos.push(nobj)
+            }
+            localStorage.setItem("t", JSON.stringify(todos))
+
+            if (todos.length > 0) {
+                alert("List is saved successfully")
+            }
+            else {
+                alert("add something to save")
+            }
+        }
+
+
+        function sub(nc, nvar) {
+
+            arr.push(nvar)
+            nli = document.createElement('li')
+            nli.classList.add(nc)
+
+            nli.appendChild(document.createTextNode(nvar))
+            document.getElementById('dislist').appendChild(nli)
+
+
+            nli.addEventListener("dblclick", function () {
+                if (this.classList.contains("completed")) {
+                    this.classList.remove("completed")
+                } else {
+                    this.classList.add("completed")
+                }
+
+            })
+        }
+
+        function loadlist() {
+            if (localStorage.getItem("t") != null) {
+                var too = JSON.parse(localStorage.getItem("t"))
+                for (var i = 0; i < too.length; i++) {
+                    var to = too[i]
+                    sub(to.completed, to.task)
+                }
+            }
+        }
+
+
+
+
+    </script>
+</head>
+
+<body>
+    <div class="main">
+        <b>
+            <h2 style="margin-bottom: 4px;">My to-do list</h2>
+        </b>
+        <div>
+            <i style="color:rgba(169, 169, 169, 0.979)">Double-click an item to mark it complete or to undo it</i>
+        </div>
+        <br />
+
+        <input type="text" style=" height:30px;width:190px;border-radius: 2px;margin-right: 5px;" id="nam" />
+        <input type="button"
+            style=" border-color: cyan; height:30px;width:53px;color:white; background-color:rgb(0, 132, 255) ; border-radius: 3px;"
+            value="Add" onclick="subi()" />
+
+
+
+        <ol id="dislist">
+        </ol>
+        <button id="cc" style="color:white; background-color:rgb(0, 132, 255) ; width:230px;" onclick="cc()">Clear Completed</button>
+        <button id="el" style="color:white; background-color:crimson" onclick="el()">Empty List</button>
+        <button id="sl" style="color:white; background-color:green" onclick="sl()">Save List</button>
+
+
+    </div>
+
+    <script>
+        loadlist()
+
+    </script>
+</body>
+
+</html>
